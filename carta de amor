@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carta de Amor 💖</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: "Georgia", serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow-x: hidden;
+    }
+
+    .carta {
+        background: white;
+        max-width: 500px;
+        width: 100%;
+        padding: 30px 25px;
+        border-radius: 18px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        animation: aparecer 1.5s ease;
+        position: relative;
+    }
+
+    h1 {
+        text-align: center;
+        color: #c2185b;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        animation: latido 2s infinite;
+    }
+
+    p {
+        font-size: 1.05em;
+        line-height: 1.7;
+        color: #444;
+        margin-bottom: 15px;
+        opacity: 0;
+        animation: texto 1s forwards;
+    }
+
+    p:nth-child(2) { animation-delay: 1s; }
+    p:nth-child(3) { animation-delay: 2s; }
+
+    .firma {
+        text-align: right;
+        font-style: italic;
+        margin-top: 25px;
+        font-size: 1.1em;
+        opacity: 0;
+        animation: texto 1s forwards;
+        animation-delay: 3s;
+        color: #222;
+    }
+
+    /* Animaciones */
+    @keyframes aparecer {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes texto {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes latido {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+    }
+
+    /* Corazones flotando */
+    .corazon {
+        position: fixed;
+        bottom: -20px;
+        color: rgba(255, 0, 100, 0.6);
+        font-size: 20px;
+        animation: flotar 6s linear infinite;
+    }
+
+    @keyframes flotar {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-110vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="carta">
+    <h1 id="titulo"></h1>
+
+    <p id="p1"></p>
+    <p id="p2"></p>
+
+    <div class="firma" id="firma"></div>
+</div>
+
+<script>
+    // 💖 EDITA AQUÍ TU MENSAJE 💖
+    const nombre = "Mi Loquita";
+    const mensaje1 = "Desde que llegaste a mi vida, todo cambió. Gracias por estar en mi vida, por ti los diás son más lindos y coloridos, me gustaria esatr contigo el dia de hoy para poder divertirnos juntos, te  dare mis sonrisas más sinceras ya qur contigo mi corazón es más tranquilo.";
+    const mensaje2 = "Quiero que sepas que te pienso más de lo que imaginas , que siempre estas en mi corazón y que cada latido de mi corazón es por ti.";
+    const tuNombre = "Con todo mi amor ❤️";
+
+    document.getElementById("titulo").textContent = "Para " + nombre;
+    document.getElementById("p1").textContent = mensaje1;
+    document.getElementById("p2").textContent = mensaje2;
+    document.getElementById("firma").innerHTML = `Siempre tu pato loco,<br>${tuNombre}`;
+
+    // 💕 Corazones flotando
+    function crearCorazon() {
+        const corazon = document.createElement("div");
+        corazon.classList.add("corazon");
+        corazon.innerHTML = "❤️";
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.fontSize = (15 + Math.random() * 20) + "px";
+        corazon.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(corazon);
+
+        setTimeout(() => {
+            corazon.remove();
+        }, 7000);
+    }
+
+    setInterval(crearCorazon, 600);
+</script>
+
+</body>
+</html>
